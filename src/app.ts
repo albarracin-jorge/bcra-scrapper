@@ -6,11 +6,12 @@ const app = express();
 const port = 3000;
 
 // cron.schedule('10 11,13,15 * * 1-5', async () => {
-cron.schedule('* * * * *', async () => {
-    await main(0);
-})
+// cron.schedule('* * * * *', async () => {
+//     await main(0);
+// })
 
 app.get('/', async (req, res) => {
+    await main(3);
     res.json({result: "ok"});
 });
 

@@ -16,4 +16,16 @@ interface ScrapingResult {
     banks: Bank[];
 }
 
-export { Quote, Bank, ScrapingResult };
+interface QuoteTable {
+    id?: number;
+    bankName: string;
+    hour?: string | null;
+    buy?: number | null;
+    sell?: number | null;
+    date?: Date;
+    createdAt?: Date | null;
+    updatedAt?: Date | null;
+    deletedAt?: Date | null;
+}
+
+export { Quote, Bank, ScrapingResult, QuoteTable };

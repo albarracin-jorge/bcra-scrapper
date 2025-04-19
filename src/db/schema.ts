@@ -3,11 +3,11 @@ import { mysqlTable, int, double, time, varchar, timestamp } from "drizzle-orm/m
 export const quotesTable = mysqlTable("quotes", {
     id: int('id').primaryKey().autoincrement(),
     bankName: varchar('bank_name', { length: 255 }),
-    hour: time('hour'), // Antes era varchar, ahora corregido a TIME
+    hour: time('hour'),
     buy: double('buy'),
     sell: double('sell'),
-    date: timestamp('date'), // Asumimos que querías la fecha completa. Si solo quieres DATE, se puede cambiar
+    date: timestamp('date'),
     createdAt: timestamp('createdAt').notNull().defaultNow(),
     updatedAt: timestamp('updatedAt').defaultNow().onUpdateNow(),
-    deletedAt: timestamp('deletedAt'), // Puede ser nulo si no está eliminado
+    deletedAt: timestamp('deletedAt'),
 })

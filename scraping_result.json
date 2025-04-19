@@ -1,0 +1,262 @@
+{
+  "date": "14/04/2025",
+  "banks": [
+    {
+      "name": "BANCO DE GALICIA Y BUENOS AIRES S.A.U.",
+      "quote": [
+        {
+          "hour": "11:00 hs.",
+          "operationType": "Electrónico",
+          "buy": "1.150,000",
+          "sell": "1.200,000"
+        },
+        {
+          "hour": "13:00 hs.",
+          "operationType": "Electrónico",
+          "buy": "1.180,000",
+          "sell": "1.230,000"
+        },
+        {
+          "hour": "15:00 hs.",
+          "operationType": "Electrónico",
+          "buy": "1.180,000",
+          "sell": "1.230,000"
+        }
+      ]
+    },
+    {
+      "name": "BANCO DE LA NACION ARGENTINA",
+      "quote": [
+        {
+          "hour": "11:00 hs.",
+          "operationType": "Electrónico",
+          "buy": "1.140,000",
+          "sell": "1.190,000"
+        },
+        {
+          "hour": "13:00 hs.",
+          "operationType": "Electrónico",
+          "buy": "1.160,000",
+          "sell": "1.210,000"
+        },
+        {
+          "hour": "15:00 hs.",
+          "operationType": "Electrónico",
+          "buy": "1.180,000",
+          "sell": "1.230,000"
+        }
+      ]
+    },
+    {
+      "name": "INDUSTRIAL AND COMMERCIAL BANK OF CHINA (ARGENTINA) S.A.U.",
+      "quote": [
+        {
+          "hour": "11:00 hs.",
+          "operationType": "Electrónico",
+          "buy": "1.149,500",
+          "sell": "1.207,000"
+        },
+        {
+          "hour": "13:00 hs.",
+          "operationType": "Electrónico",
+          "buy": "1.179,500",
+          "sell": "1.237,000"
+        },
+        {
+          "hour": "15:00 hs.",
+          "operationType": "Electrónico",
+          "buy": "1.179,500",
+          "sell": "1.237,000"
+        }
+      ]
+    },
+    {
+      "name": "BANCO BBVA ARGENTINA S.A.",
+      "quote": [
+        {
+          "hour": "11:00 hs.",
+          "operationType": "Electrónico",
+          "buy": "1.150,000",
+          "sell": "1.200,000"
+        },
+        {
+          "hour": "15:00 hs.",
+          "operationType": "Electrónico",
+          "buy": "1.180,000",
+          "sell": "1.230,000"
+        }
+      ]
+    },
+    {
+      "name": "BANCO SUPERVIELLE S.A.",
+      "quote": [
+        {
+          "hour": "15:00 hs.",
+          "operationType": "Electrónico",
+          "buy": "1.180,000",
+          "sell": "1.250,000"
+        }
+      ]
+    },
+    {
+      "name": "BANCO DE LA CIUDAD DE BUENOS AIRES",
+      "quote": [
+        {
+          "hour": "13:00 hs.",
+          "operationType": "Electrónico",
+          "buy": "1.170,050",
+          "sell": "1.239,950"
+        },
+        {
+          "hour": "15:00 hs.",
+          "operationType": "Electrónico",
+          "buy": "1.180,050",
+          "sell": "1.249,950"
+        }
+      ]
+    },
+    {
+      "name": "BANCO PATAGONIA S.A.",
+      "quote": [
+        {
+          "hour": "11:00 hs.",
+          "operationType": "Electrónico",
+          "buy": "1.125,000",
+          "sell": "1.225,000"
+        },
+        {
+          "hour": "13:00 hs.",
+          "operationType": "Electrónico",
+          "buy": "1.150,000",
+          "sell": "1.225,000"
+        },
+        {
+          "hour": "15:00 hs.",
+          "operationType": "Electrónico",
+          "buy": "1.150,000",
+          "sell": "1.225,000"
+        }
+      ]
+    },
+    {
+      "name": "BANCO SANTANDER ARGENTINA S.A.",
+      "quote": [
+        {
+          "hour": "11:00 hs.",
+          "operationType": "Electrónico",
+          "buy": "1.140,000",
+          "sell": "1.200,000"
+        },
+        {
+          "hour": "13:00 hs.",
+          "operationType": "Electrónico",
+          "buy": "1.180,000",
+          "sell": "1.230,000"
+        },
+        {
+          "hour": "15:00 hs.",
+          "operationType": "Electrónico",
+          "buy": "1.180,000",
+          "sell": "1.230,000"
+        }
+      ]
+    },
+    {
+      "name": "BRUBANK S.A.U.",
+      "quote": [
+        {
+          "hour": "11:00 hs.",
+          "operationType": "Electrónico",
+          "buy": "1.150,000",
+          "sell": "1.190,000"
+        },
+        {
+          "hour": "13:00 hs.",
+          "operationType": "Electrónico",
+          "buy": "1.180,000",
+          "sell": "1.215,000"
+        },
+        {
+          "hour": "15:00 hs.",
+          "operationType": "Electrónico",
+          "buy": "1.180,000",
+          "sell": "1.225,000"
+        }
+      ]
+    },
+    {
+      "name": "Banco GGAL SA",
+      "quote": [
+        {
+          "hour": "11:00 hs.",
+          "operationType": "Electrónico",
+          "buy": "1.150,000",
+          "sell": "1.200,000"
+        },
+        {
+          "hour": "13:00 hs.",
+          "operationType": "Electrónico",
+          "buy": "1.170,000",
+          "sell": "1.220,000"
+        },
+        {
+          "hour": "15:00 hs.",
+          "operationType": "Electrónico",
+          "buy": "1.190,000",
+          "sell": "1.240,000"
+        }
+      ]
+    },
+    {
+      "name": "BANCO CREDICOOP COOPERATIVO LIMITADO",
+      "quote": [
+        {
+          "hour": "15:00 hs.",
+          "operationType": "Electrónico",
+          "buy": "1.170,000",
+          "sell": "1.230,000"
+        }
+      ]
+    },
+    {
+      "name": "BANCO MACRO S.A.",
+      "quote": [
+        {
+          "hour": "11:00 hs.",
+          "operationType": "Electrónico",
+          "buy": "1.150,000",
+          "sell": "1.250,000"
+        },
+        {
+          "hour": "15:00 hs.",
+          "operationType": "Electrónico",
+          "buy": "1.180,000",
+          "sell": "1.240,000"
+        }
+      ]
+    },
+    {
+      "name": "BANCO PIANO S.A.",
+      "quote": [
+        {
+          "hour": "11:00 hs.",
+          "operationType": "Electrónico",
+          "buy": "1.160,000",
+          "sell": "1.280,000"
+        },
+        {
+          "hour": "13:00 hs.",
+          "operationType": "Electrónico",
+          "buy": "1.160,000",
+          "sell": "1.230,000"
+        },
+        {
+          "hour": "15:00 hs.",
+          "operationType": "Electrónico",
+          "buy": "1.160,000",
+          "sell": "1.210,000"
+        }
+      ]
+    }
+  ]
+}

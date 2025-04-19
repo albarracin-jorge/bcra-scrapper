@@ -1,5 +1,6 @@
 import { chromium } from "playwright";
-import { ScrapingResult, Bank, Quote } from "./types";
+import { ScrapingResult, Bank, QuoteTable } from "./types";
+import { saveQuotes } from "./controller/bcra";
 
 const BCRA_URL = "https://www.bcra.gob.ar/PublicacionesEstadisticas/Tipo_de_cambio_minorista.asp";
 const BCRA_URL_RESULT = "https://www.bcra.gob.ar/PublicacionesEstadisticas/Tipo_de_cambio_minorista_2.asp";
@@ -9,7 +10,9 @@ export async function main(dayBefore: number = 0): Promise<ScrapingResult | unde
     
     const browser = await chromium.launch({ headless: true });
     try {
-        const context = await browser.newContext();
+        const context = await browser.newContext({
+            ignoreHTTPSErrors: true,
+        });
         const page = await context.newPage();
 
         await page.goto(BCRA_URL);
@@ -37,8 +40,13 @@ export async function main(dayBefore: number = 0): Promise<ScrapingResult | unde
             });
         });
         if(!data || data.length === 0) throw new Error("No data found");
+        // console.log(data);
         const result = parseQuote(data);
-
+        // console.log(result);
+        const quotesTable = parseDataToQuotesTable(data);
+        console.log(quotesTable);
+        await saveQuotes(quotesTable);
+        console.log("Data saved successfully");
         return result;
 
     } catch (error) {
@@ -71,14 +79,11 @@ function parseQuote(data: string[][]): { date: string; banks: any[] } {
         bankRowStart = 9;
         hours = data[6];
         date = dateRaw.split(': ')[1].trim();
-        console.log(bankRowStart, hours, date);
-
     } else {
         const dateRaw = data[0][0];
         bankRowStart = 5;
         hours = data[2];
         date = dateRaw.split(': ')[1].trim();
-        console.log(bankRowStart, hours, date);
     }
     const banks: Bank[] = [];
 
@@ -117,4 +122,69 @@ function parseQuote(data: string[][]): { date: string; banks: any[] } {
         date,
         banks
     };
+}
+
+function parseDataToQuotesTable(data: string[][]): QuoteTable[] {
+    const result: QuoteTable[] = [];
+    let bankRowStart: number;
+    let hours: string[];
+    let dateStr: string;
+
+    // Determine the structure of the data
+    if (data[0][0] === "Planilla por Hora") {
+        const dateRaw = data[4][0];
+        bankRowStart = 9;
+        hours = data[6];
+        dateStr = dateRaw.split(': ')[1].trim();
+    } else {
+        const dateRaw = data[0][0];
+        bankRowStart = 5;
+        hours = data[2];
+        dateStr = dateRaw.split(': ')[1].trim();
+    }
+
+    // Convert DD/MM/YYYY to YYYY-MM-DD for MySQL timestamp
+    const [day, month, year] = dateStr.split('/');
+    const formattedDate = new Date(`${year}-${month}-${day}T00:00:00`);
+
+    // Parse each bank's data
+    for (let i = bankRowStart; i < data.length; i++) {
+        const bankData = data[i];
+        const bankName = bankData[0];
+
+        if (bankName && bankName.trim() !== '') {
+            const indicesElectronico = [3, 7, 11]; // Indices for electronic quotes
+
+            for (let j = 0; j < indicesElectronico.length; j++) {
+                const baseIndex = indicesElectronico[j];
+                const buy = bankData[baseIndex] || null;
+                const sell = bankData[baseIndex + 1] || null;
+
+                if (buy || sell) {
+                    // Convert hour format (e.g., "11:00 hs.") to MySQL time format (HH:MM:SS)
+                    const hourMatch = hours[j].match(/(\d+):(\d+)/);
+                    let formattedHour = null;
+                    
+                    if (hourMatch) {
+                        const [, hr, min] = hourMatch;
+                        formattedHour = `${hr.padStart(2, '0')}:${min.padStart(2, '0')}:00`;
+                    }
+
+                    // Convert string number with comma to float
+                    const buyValue = buy ? parseFloat(buy.replace('.', '').replace(',', '.')) : null;
+                    const sellValue = sell ? parseFloat(sell.replace('.', '').replace(',', '.')) : null;
+
+                    result.push({
+                        bankName: bankName.trim(),
+                        hour: formattedHour ,
+                        buy: buyValue,
+                        sell: sellValue,
+                        date: formattedDate,
+                    });
+                }
+            }
+        }
+    }
+
+    return result;
 }
