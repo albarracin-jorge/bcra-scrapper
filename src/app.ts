@@ -11,7 +11,7 @@ const port = 3000;
 // })
 
 app.get('/', async (req, res) => {
-    await main(3);
+    await main(0);
     res.json({result: "ok"});
 });
 
