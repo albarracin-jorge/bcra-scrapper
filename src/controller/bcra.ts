@@ -1,6 +1,6 @@
 import { drizzle } from "drizzle-orm/mysql2";
 import { eq, and } from "drizzle-orm";
-import { quotesTable } from "../db/schema";
+import { quotesTable } from "../db/schema.js";
 import "dotenv/config";
 
 const db = drizzle(process.env.DATABASE_URL!);

@@ -1,6 +1,6 @@
 import { chromium } from "playwright";
 import { ScrapingResult, Bank, QuoteTable } from "./types";
-import { saveQuotes } from "./controller/bcra";
+import { saveQuotes } from "./controller/bcra.js";
 
 const BCRA_URL = "https://www.bcra.gob.ar/PublicacionesEstadisticas/Tipo_de_cambio_minorista.asp";
 const BCRA_URL_RESULT = "https://www.bcra.gob.ar/PublicacionesEstadisticas/Tipo_de_cambio_minorista_2.asp";
