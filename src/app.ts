@@ -6,16 +6,14 @@ const app = express();
 const port = 3000;
 
 cron.schedule('*/10 11-15 * * 1-5', async () => {
-// cron.schedule('* * * * *', async () => {
     await main(0);
 })
 
-// await main(0);
+// await main(1);
 
-// app.get('/', async (req, res) => {
-//     await main(0);
-//     res.json({result: "ok"});
-// });
+app.get('/', async (req, res) => {
+    res.json({result: "server running"});
+});
 
 app.listen(port, () => {
     console.log(`Server is running`);
