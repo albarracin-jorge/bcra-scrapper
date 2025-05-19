@@ -6,9 +6,9 @@ const BCRA_URL = "https://www.bcra.gob.ar/PublicacionesEstadisticas/Tipo_de_camb
 const BCRA_URL_RESULT = "https://www.bcra.gob.ar/PublicacionesEstadisticas/Tipo_de_cambio_minorista_2.asp";
 
 export async function main(dayBefore: number = 0): Promise<ScrapingResult | undefined> {
-    console.log("Executing scraping");
     
     const browser = await chromium.launch({ headless: true });
+    console.log("Executing scraping", browser.version());
     try {
         const context = await browser.newContext({
             ignoreHTTPSErrors: true,
