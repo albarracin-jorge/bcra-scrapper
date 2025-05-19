@@ -9,7 +9,7 @@ cron.schedule('*/10 11-15 * * 1-5', async () => {
     await main(0);
 })
 
-// await main(0);
+// await main(1);
 
 app.get('/', async (req, res) => {
     res.json({result: "server running"});

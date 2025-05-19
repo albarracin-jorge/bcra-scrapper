@@ -1,5 +1,33 @@
 [phases.setup]
-nixPkgs = ["nodejs", "playwright"]
+nixPkgs = [
+  "nodejs",
+  "playwright",
+  "nss",
+  "atk",
+  "atkmm",
+  "gtk3",
+  "pango",
+  "cairo",
+  "cups",
+  "dbus",
+  "expat",
+  "fontconfig",
+  "glib",
+  "gdk-pixbuf",
+  "nspr",
+  "libx11",
+  "libxcomposite",
+  "libxdamage",
+  "libxrandr",
+  "libxss",
+  "libxext",
+  "libxfixes",
+  "libxrender",
+  "libxcb",
+  "libdrm",
+  "libgbm",
+  "alsa-lib"
+]
 
 [phases.install]
 cmds = ["npm install"]
