@@ -5,7 +5,7 @@ import cron from 'node-cron';
 const app = express();
 const port = 3000;
 
-cron.schedule('*/3 11-19 * * 1-6', async () => {
+cron.schedule('*/3 11-21 * * 1-6', async () => {
     await main(0);
 })
 

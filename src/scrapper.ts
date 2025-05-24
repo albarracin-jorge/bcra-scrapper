@@ -8,7 +8,8 @@ const BCRA_URL_RESULT = "https://www.bcra.gob.ar/PublicacionesEstadisticas/Tipo_
 export async function main(dayBefore: number = 0): Promise<ScrapingResult | undefined> {
     
     const browser = await chromium.launch({ headless: true });
-    console.log("Executing scraping", browser.version());
+    console.log("Executing scraping")
+    console.log(browser.version());
     try {
         const context = await browser.newContext({
             ignoreHTTPSErrors: true,
