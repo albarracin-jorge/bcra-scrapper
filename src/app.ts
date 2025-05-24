@@ -5,11 +5,11 @@ import cron from 'node-cron';
 const app = express();
 const port = 3000;
 
-cron.schedule('*/10 11-15 * * 1-5', async () => {
+cron.schedule('*/3 11-19 * * 1-6', async () => {
     await main(0);
 })
 
-// await main(0);
+// await main(5);
 
 app.get('/', async (req, res) => {
     res.json({result: "server running"});
