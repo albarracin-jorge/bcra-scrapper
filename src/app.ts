@@ -1,18 +1,13 @@
-import express from 'express';
 import { main } from './scrapper.js';
 
-const app = express();
-const port = process.env.PORT || 3000;
-
-await main(0);
-
-app.get('/', async (req, res) => {
-    res.json({
-        status: "OK",
-        message: "BCRA Scrapper is running"
-    });
-});
-
-app.listen(port, () => {
-    console.log(`✅ Server is running on port ${port}`);
-});
+(async () => {
+    try {
+        console.log('Starting BCRA scraping...');
+        await main(0);
+        console.log('✅ Scraping completed successfully');
+        process.exit(0);
+    } catch (error) {
+        console.error('❌ Scraping failed:', error);
+        process.exit(1);
+    }
+})();
