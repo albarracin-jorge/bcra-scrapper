@@ -53,9 +53,7 @@ export async function main(dayBefore: number = 0): Promise<ScrapingResult | unde
             });
         });
         if(!data || data.length === 0) throw new Error("No data found");
-        // console.log(data);
         const result = parseQuote(data);
-        // console.log(result);
         const quotesTable = parseDataToQuotesTable(data);
         console.log(quotesTable);
         await saveQuotes(quotesTable);
@@ -143,7 +141,6 @@ function parseDataToQuotesTable(data: string[][]): QuoteTable[] {
     let hours: string[];
     let dateStr: string;
 
-    // Determine the structure of the data
     if (data[0][0] === "Planilla por Hora") {
         const dateRaw = data[4][0];
         bankRowStart = 9;
@@ -156,17 +153,15 @@ function parseDataToQuotesTable(data: string[][]): QuoteTable[] {
         dateStr = dateRaw.split(': ')[1].trim();
     }
 
-    // Convert DD/MM/YYYY to YYYY-MM-DD for MySQL timestamp
     const [day, month, year] = dateStr.split('/');
     const formattedDate = new Date(`${year}-${month}-${day}T00:00:00`);
 
-    // Parse each bank's data
     for (let i = bankRowStart; i < data.length; i++) {
         const bankData = data[i];
         const bankName = bankData[0];
 
         if (bankName && bankName.trim() !== '') {
-            const indicesElectronico = [3, 7, 11]; // Indices for electronic quotes
+            const indicesElectronico = [3, 7, 11];
 
             for (let j = 0; j < indicesElectronico.length; j++) {
                 const baseIndex = indicesElectronico[j];
@@ -174,7 +169,6 @@ function parseDataToQuotesTable(data: string[][]): QuoteTable[] {
                 const sell = bankData[baseIndex + 1] || null;
 
                 if (buy || sell) {
-                    // Convert hour format (e.g., "11:00 hs.") to MySQL time format (HH:MM:SS)
                     const hourMatch = hours[j].match(/(\d+):(\d+)/);
                     let formattedHour = null;
                     
@@ -183,7 +177,6 @@ function parseDataToQuotesTable(data: string[][]): QuoteTable[] {
                         formattedHour = `${hr.padStart(2, '0')}:${min.padStart(2, '0')}:00`;
                     }
 
-                    // Convert string number with comma to float
                     const buyValue = buy ? parseFloat(buy.replace('.', '').replace(',', '.')) : null;
                     const sellValue = sell ? parseFloat(sell.replace('.', '').replace(',', '.')) : null;
 
