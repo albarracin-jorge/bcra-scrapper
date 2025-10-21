@@ -1,4 +1,4 @@
-import { chromium } from "playwright";
+import { chromium } from "playwright-core";
 import { ScrapingResult, Bank, QuoteTable } from "./types";
 import { saveQuotes } from "./controller/bcra.js";
 
@@ -7,7 +7,19 @@ const BCRA_URL_RESULT = "https://www.bcra.gob.ar/PublicacionesEstadisticas/Tipo_
 
 export async function main(dayBefore: number = 0): Promise<ScrapingResult | undefined> {
     
-    const browser = await chromium.launch({ headless: true });
+    const browser = await chromium.launch({ 
+        headless: true,
+        args: [
+            '--no-sandbox',
+            '--disable-setuid-sandbox',
+            '--disable-dev-shm-usage',
+            '--disable-gpu',
+            '--no-first-run',
+            '--no-zygote',
+            '--single-process',
+            '--disable-extensions'
+        ]
+    });
     console.log("Executing scraping")
     console.log(browser.version());
     try {

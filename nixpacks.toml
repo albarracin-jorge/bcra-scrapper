@@ -1,2 +1,21 @@
 [phases.setup]
-cmds = ["npx playwright install --with-deps chromium"]
+aptPkgs = [
+    "chromium",
+    "chromium-sandbox"
+]
+
+[phases.install]
+cmds = [
+    "npm install",
+    "npm run postinstall"
+]
+
+[phases.build]
+cmds = ["npm run build"]
+
+[start]
+cmd = "npm start"
+
+[variables]
+PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD = "0"
+PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH = "/usr/bin/chromium"
