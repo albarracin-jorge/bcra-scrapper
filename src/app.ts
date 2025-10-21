@@ -7,11 +7,11 @@ import { quotesTable } from './db/schema.js';
 const app = express();
 const port = 3000;
 
-cron.schedule('*/3 11-15 * * 1-5', async () => {
-    await main(0);
-})
+// cron.schedule('*/3 11-15 * * 1-5', async () => {
+//     await main(0);
+// })
 
-// await main(5);
+await main(0);
 
 app.get('/', async (req, res) => {
     const db = drizzle(process.env.DATABASE_URL!);
